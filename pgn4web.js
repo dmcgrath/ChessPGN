@@ -5,6 +5,14 @@
  *  for credits, license and more details
  */
 
+ /*
+   Google Drive modification summary
+   
+   Stopped pgn4web_onload_event function being called automatically on window load.
+   This enables us to call it after initialization of the Google Drive integration,
+   and after re have retrieved the PGN file to be used.
+ */
+ 
 "use strict";
 
 var pgn4web_version = '2.86';
@@ -63,8 +71,10 @@ function simpleAddEvent(obj, evt, cbk) {
 }
 
 simpleAddEvent(document, "keydown", pgn4web_handleKey_event);
-simpleAddEvent(window, "load", pgn4web_onload_event);
 
+// START: Google Drive modification, removing onload event so it can be called later
+// simpleAddEvent(window, "load", pgn4web_onload_event);
+// END: Google Drive modification
 
 function pgn4web_onload_event(e) {
   pgn4web_onload(e);
@@ -1013,6 +1023,7 @@ var commentsIntoMoveText = true;
 var commentsOnSeparateLines = false;
 
 var pgnUrl = '';
+var pgnDrive = '';
 
 var CastlingLong = new Array(2);
 var CastlingShort = new Array(2);
@@ -1896,10 +1907,10 @@ function loadPgnFromPgnUrl(pgnUrl) {
   return true;
 }
 
-function SetPgnUrl(url) {
+function SetPgnUrl(url, drive) {
   pgnUrl = url;
+  pgnDrive = drive;
 }
-
 
 function LiveBroadcastLastModified_Reset() {
   LiveBroadcastLastModified = new Date(0);
@@ -2041,7 +2052,9 @@ function loadPgnFromTextarea(textareaId) {
 }
 
 function createBoard() {
-  if (pgnUrl) {
+  if (pgnDrive) {
+    getAuth(function() {getFile(pgnUrl);});
+  } else if (pgnUrl) {
     loadPgnFromPgnUrl(pgnUrl);
   } else if ( document.getElementById("pgnText") ) {
     loadPgnFromTextarea("pgnText");
