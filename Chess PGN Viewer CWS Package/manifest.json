@@ -1,0 +1,28 @@
+{
+    "name" : "Chess PGN Viewer",
+    "version" : "1.0",
+    "manifest_version" : 2,
+    "description" : "Allows you to view and replay Chess PGN (Portable Game Notation) files from Google Drive",
+    "container" : "GOOGLE_DRIVE",
+    "api_console_project_id" : "1023257958231",
+    "gdrive_mime_types": {
+      "http://drive.google.com/intents/opendrivedoc": [
+        {
+          "type": ["application/x-chess-pgn", "text/x-chess-pgn",  "application/vnd.google.drive.ext-type.pgn"],
+          "href": "http://dmcgrath.github.io/ChessPGN/dynamic-frame.html",
+          "title" : "Open",
+          "disposition" : "window"
+        }
+      ]
+    },
+    "icons": {
+      "32": "bk-32.png",
+      "48": "bk-48.png",
+      "128": "bk-128.png"
+    },
+    "app" : {
+      "launch" : {
+      "web_url" : "http://dmcgrath.github.io/ChessPGN/"
+      }
+    }
+  }
