@@ -649,7 +649,7 @@ function customFunctionOnPgnTextLoad() {
     theObj.title = titleLine;
     var text = "", ii;
     for (ii = 0; ii <= 2 + Math.log(numberOfGames)/Math.LN2; ii+=2) { text += "&middot; "; }
-    theObj.innerHTML = text + titleLine + text;
+    theObj.innerHTML = text + titleLine + " " + text;
   }
   // END: Google Drive modification
   
