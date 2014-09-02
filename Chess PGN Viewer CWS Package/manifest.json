@@ -1,8 +1,8 @@
 {
-    "name" : "Chess PGN Viewer",
-    "version" : "1.0",
-    "manifest_version" : 2,
-    "description" : "Allows you to view and replay Chess PGN (Portable Game Notation) files from Google Drive",
+    "name": "Chess PGN Viewer",
+    "version": "1.0.1",
+    "manifest_version": 2,
+    "description": "Allows you to view and replay Chess PGN (Portable Game Notation) files from Google Drive",
     "container" : "GOOGLE_DRIVE",
     "api_console_project_id" : "1023257958231",
     "gdrive_mime_types": {

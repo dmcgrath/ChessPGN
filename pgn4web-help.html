@@ -8,9 +8,17 @@
   for credits, license and more details
 -->
 
+<!--
+  Google Drive modification summary
+  
+  Added some text to help so the user wouldn't get lost between the
+  Google Drive integration 'Chess PGN Viewer' and the pgn4web help that
+  runs everything
+-->
+
 <head>
 
-<title>pgn4web help</title>
+<title>Chess PGN Viewer & pgn4web help</title>
 
 <style type="text/css">
 
@@ -80,7 +88,7 @@ a.headingSelected:hover {
 <script type="text/javascript">
 "use strict";
 
-var sections = ["user_interface", "shortcut_keys", "shortcut_squares", "touch_gestures", "search_tool", "informant_symbols", "credits_and_license"];
+var sections = ["chess_pgn_viewer", "user_interface", "shortcut_keys", "shortcut_squares", "touch_gestures", "search_tool", "informant_symbols", "credits_and_license"];
 
 function showSection(section) {
   var section2show = sections[0], theObj;
@@ -163,6 +171,10 @@ for (var s in sections) {
 </script>
 
 </div>
+<div id="chess_pgn_viewer_section" class="section">
+The Chess PGN Viewer is a light wrapping around the pgn4web open source library. In this help you will find information that that will enable you to get the most out of this platform.
+</div>
+
 
 <div id="user_interface_section" class="section">
 
@@ -407,6 +419,7 @@ Technical note: Chess Informant symbols display requires a modern browser suppor
 
 
 <div id="credits_and_license_section" class="section">
+Google Drive integration implemented by <a href="https://plus.google.com/+DanMcGrath">Dan McGrath</a> and is under the GPL v2 license. You can find the source on <a href="https://github.com/dmcgrath/ChessPGN/tree/gh-pages">Github</a>.
 
 Javascript modifications of <a href="mailto:pgn4web@casaschi.net">Paolo Casaschi</a> on code from <a href="http://ficsgames.org" target="_blank">the ficsgames database</a>, in turn likely based on code from <a href="http://www.lutanho.net/pgn/pgnviewer.html" target="_blank">the LT PGN viewer</a>.
 <p></p>
