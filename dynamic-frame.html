@@ -642,14 +642,17 @@ function customFunctionOnPgnTextLoad() {
     else { document.title = numberOfGames + " game" + (numberOfGames == 1 ? "" : "s"); }
   }
 
+  // START: Google Drive modification, made game link more descriptive
   fillGameList(false);
   if (theObj = document.getElementById("ShowGameListLink")) {
-    theObj.title = "select from " + numberOfGames + " games";
+    titleLine = "select from " + numberOfGames + " games";
+    theObj.title = titleLine;
     var text = "", ii;
-    for (ii = 0; ii <= 4 + Math.log(numberOfGames)/Math.LN2; ii++) { text += "&middot; "; }
-    text += "&middot;";
-    theObj.innerHTML = text;
+    for (ii = 0; ii <= 2 + Math.log(numberOfGames)/Math.LN2; ii+=2) { text += "&middot; "; }
+    theObj.innerHTML = text + titleLine + text;
   }
+  // END: Google Drive modification
+  
   if (theObj = document.getElementById("ShowGameList")) {
     theObj.style.visibility = numberOfGames > 1 ? "visible" : "hidden";
   }
