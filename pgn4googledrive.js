@@ -1,4 +1,5 @@
 
+var thisParamString = window.location.search;
 
 // Drive API information needed to identify this app.
 var CLIENT_ID = '1023257958231-8nav97ck2tohrhvfguecrvo03qe3t2ie.apps.googleusercontent.com';
