@@ -17,10 +17,11 @@ function start_drive() {
   getAuth(pgnDrive);
 }
 
-var shareDrive = new gapi.drive.share.ShareClient(PROJECT_NUMBER);
+var shareDrive;
 
     // Enable sharing
    var init = function() {
+     shareDrive = new gapi.drive.share.ShareClient(PROJECT_NUMBER);
      shareDrive.setItemIds([this.pgnDrive]);
    }
    init = init.bind(driveData);
