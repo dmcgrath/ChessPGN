@@ -4,6 +4,7 @@ var thisParamString = window.location.search;
 // Drive API information needed to identify this app.
 var CLIENT_ID = '1023257958231-8nav97ck2tohrhvfguecrvo03qe3t2ie.apps.googleusercontent.com';
 var SCOPES = ['https://www.googleapis.com/auth/drive.file', 'https://www.googleapis.com/auth/drive.install', 'https://www.googleapis.com/auth/userinfo.profile'];
+var PROJECT_NUMBER = 1023257958231;
 
 // Accept the JSON state variable that is passed along by Google Drive when opening a PGN file
 function start_drive() {
@@ -23,6 +24,14 @@ function getAuth(fileID) {
   var driveData = {pgnDrive: fileID};
   var handleRes = handleAuthResult.bind(driveData)
   gapi.auth.authorize({'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': true}, handleRes);
+  
+    // Enable sharing
+   var init = function() {
+     var s = new gapi.drive.share.ShareClient(PROJECT_NUMBER);
+     s.setItemIds([this.pgnDrive]);
+   }
+   init = init.bind(driveData);
+   gapi.load('drive-share', init);
 }
 
 // Called by getAuth to handle the result of checking for authorization,
@@ -34,7 +43,7 @@ function handleAuthResult(authResult) {
   } else {
     var loadPgn = getPgn.bind(this);
     gapi.client.load('drive', 'v2', loadPgn);
-  }
+   }
 }
 
 // Using the file id passed in the state variable from Drive, attempt to get the PGN file.

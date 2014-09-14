@@ -843,6 +843,9 @@ simpleAddEvent(window, "orientationchange", function() {
 </head>
 
 <body onResize="myOnResize();" onLoad="myOnResize();">
+<div id="driveControls">
+   <button onclick="s.showSettingsDialog()">Share this game set</button>
+</div>
 
 <!-- paste your PGN below and make sure you dont specify an external source with SetPgnUrl() -->
 <form style="display: none;"><textarea style="display: none;" id="pgnText">
@@ -851,7 +854,6 @@ simpleAddEvent(window, "orientationchange", function() {
 <!-- paste your PGN above and make sure you dont specify an external source with SetPgnUrl() -->
 
 <div style="display:none;" id="GameSelector"></div>
-
 <div class="gameList" id="GameList"><div class="gameListHeader" id="GameListHeader"></div><div class="gameListBody" id="GameListBody"><div class="gameListBodyItems" id="GameListBodyItems"></div></div></div>
 
 <div id="GameBoard"></div>
