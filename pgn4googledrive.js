@@ -17,6 +17,14 @@ function start_drive() {
   getAuth(pgnDrive);
 }
 
+var shareDrive = new gapi.drive.share.ShareClient(PROJECT_NUMBER);
+
+    // Enable sharing
+   var init = function() {
+     shareDrive.setItemIds([this.pgnDrive]);
+   }
+   init = init.bind(driveData);
+
 // Check if we have authorization to the user's Drive account to retrieve the PGN file
 // If not, call ask the user for authorization to do so.
 // Generally, we only need to ask the user the very first time they access the app.
@@ -25,13 +33,7 @@ function getAuth(fileID) {
   var handleRes = handleAuthResult.bind(driveData)
   gapi.auth.authorize({'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': true}, handleRes);
   
-    // Enable sharing
-   var init = function() {
-     var s = new gapi.drive.share.ShareClient(PROJECT_NUMBER);
-     s.setItemIds([this.pgnDrive]);
-   }
-   init = init.bind(driveData);
-   gapi.load('drive-share', init);
+  gapi.load('drive-share', init);
 }
 
 // Called by getAuth to handle the result of checking for authorization,
