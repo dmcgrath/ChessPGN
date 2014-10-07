@@ -29,13 +29,14 @@
 
 <link rel="icon" sizes="16x16" href="pawn.ico" />
 
-<!-- Google Drive: Adding styles for buttons -->
+<!-- START: Google Drive modification for adding styles for buttons -->
 <link rel="import" href="http://www.polymer-project.org/components/paper-ripple/paper-ripple.html">
 <link rel="import" href="http://www.polymer-project.org/components/core-icons/core-icons.html">
 <link rel="import" href="http://www.polymer-project.org/components/font-roboto/roboto.html">
-<!-- End Google Drive -->
+<!-- END: Google Drive modification-->
 
 <style type="text/css">
+<!-- START: Google Drive modification for styling new controls -->
 /* From http://codepen.io/iraycd/pen/dHrxv */
     body {
       background-color: #f9f9f9;
@@ -60,7 +61,7 @@
     .button {
       display: inline-block;
       position: relative;
-      width: 120px;
+      width: 140px;
       height: 32px;
       line-height: 32px;
       border-radius: 2px;
@@ -157,7 +158,6 @@
       fill: #fff;
     }
 
-
     /* Misc */
     .center {
       text-align: center;
@@ -170,8 +170,7 @@
     .label-blue {
       color: #4285f4; 
     }
-    
- 
+<!-- END: Google Drive modification-->
 </style>
 
 <style id="dynamicStyle" type="text/css"></style>
@@ -984,12 +983,14 @@ simpleAddEvent(window, "orientationchange", function() {
 </head>
 
 <body onResize="myOnResize();" onLoad="myOnResize();">
-<div id="driveControls">
+<!-- START: Google Drive sharing control -->
+<div id="driveControls section">
     <div class="button raised blue" onclick="shareDrive.showSettingsDialog()">
-      <div class="center" fit>Share game set via Google Drive</div>
+      <div class="center" fit>Share games</div>
       <paper-ripple fit></paper-ripple>
     </div>
 </div>
+<!-- END: Google Drive modification -->
 
 <!-- paste your PGN below and make sure you dont specify an external source with SetPgnUrl() -->
 <form style="display: none;"><textarea style="display: none;" id="pgnText">
