@@ -50,7 +50,7 @@
     }
     
     section {
-      padding: 8px;
+      margin: 8px;
     }
    
     
@@ -61,7 +61,7 @@
       width: 140px;
       height: 24px;
       line-height: 24px;
-      font-size: 24px;
+      font-size: 16px;
       border-radius: 2px;
       background-color: #fff;
       color: #646464;
@@ -981,7 +981,7 @@ simpleAddEvent(window, "orientationchange", function() {
 
 <body onResize="myOnResize();" onLoad="myOnResize();">
 <!-- START: Google Drive sharing control -->
-<div id="driveControls section">
+<div id="driveControls" class="section">
     <div class="button raised blue" onclick="shareDrive.showSettingsDialog()">
       <div class="center" fit>Share games</div>
       <paper-ripple fit></paper-ripple>
