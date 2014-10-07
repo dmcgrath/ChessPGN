@@ -29,8 +29,149 @@
 
 <link rel="icon" sizes="16x16" href="pawn.ico" />
 
-<style type="text/css">
+<!-- Google Drive: Adding styles for buttons -->
+<link rel="import" href="http://www.polymer-project.org/components/paper-ripple/paper-ripple.html">
+<link rel="import" href="http://www.polymer-project.org/components/core-icons/core-icons.html">
+<link rel="import" href="http://www.polymer-project.org/components/font-roboto/roboto.html">
+<!-- End Google Drive -->
 
+<style type="text/css">
+/* From http://codepen.io/iraycd/pen/dHrxv */
+    body {
+      background-color: #f9f9f9;
+      font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -webkit-touch-callout: none;
+    }
+    
+    section {
+      padding: 30px 25px;
+    }
+    
+    section > * {
+      margin: 10px
+    }
+    
+    /* Button */
+    .button {
+      display: inline-block;
+      position: relative;
+      width: 120px;
+      height: 32px;
+      line-height: 32px;
+      border-radius: 2px;
+      font-size: 0.9em;
+      background-color: #fff;
+      color: #646464;
+    }
+    
+    .button > paper-ripple {
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    
+    .button.narrow {
+      width: 60px;
+    }
+
+    .button.blue {
+      background-color: #4285f4;
+      color: #fff;
+    }
+
+    .button.raised {
+      transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transition-delay: 0.2s;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    }
+    
+    .button.raised:active {
+      box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+      transition-delay: 0s;
+    }
+    
+    /* Icon Button */
+    .icon-button {
+      position: relative;
+      display: inline-block;
+      width: 56px;
+      height: 56px;
+    }
+    
+    .icon-button > core-icon {
+      margin: 16px;
+      transition: -webkit-transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .icon-button:hover > core-icon {
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+    }
+    
+    .icon-button > paper-ripple {
+      overflow: hidden;
+      color: #646464;
+    }
+
+    .icon-button.blue > core-icon::shadow path {
+      fill: #4285f4;
+    }
+    
+    .icon-button.blue > paper-ripple {
+      color: #4285f4;
+    }
+    
+    /* FAB */
+    .fab {
+      position: relative;
+      display: inline-block;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      color: #fff;
+      overflow: hidden;
+      transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transition-delay: 0.2s;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    }
+    
+    .fab.blue {
+      background-color: #4285f4;
+    }
+ 
+    .fab:active {
+      box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+      transition-delay: 0s;
+    }
+    
+    .fab > core-icon {
+      margin: 16px;
+    }
+    
+    .fab > core-icon::shadow path {
+      fill: #fff;
+    }
+
+
+    /* Misc */
+    .center {
+      text-align: center;
+    }
+    
+    .label {
+      padding: 0 16px;
+    }
+    
+    .label-blue {
+      color: #4285f4; 
+    }
+    
+ 
 </style>
 
 <style id="dynamicStyle" type="text/css"></style>
@@ -844,7 +985,10 @@ simpleAddEvent(window, "orientationchange", function() {
 
 <body onResize="myOnResize();" onLoad="myOnResize();">
 <div id="driveControls">
-   <button onclick="shareDrive.showSettingsDialog()">Share this game set</button>
+    <div class="button raised blue" onclick="shareDrive.showSettingsDialog()">
+      <div class="center" fit>Share game set via Google Drive</div>
+      <paper-ripple fit></paper-ripple>
+    </div>
 </div>
 
 <!-- paste your PGN below and make sure you dont specify an external source with SetPgnUrl() -->
