@@ -5,6 +5,35 @@ var CLIENT_ID = '1023257958231-8nav97ck2tohrhvfguecrvo03qe3t2ie.apps.googleuserc
 var SCOPES = ['https://www.googleapis.com/auth/drive.file', 'https://www.googleapis.com/auth/drive.install', 'https://www.googleapis.com/auth/userinfo.profile'];
 var PROJECT_NUMBER = 1023257958231;
 
+// Circular error buffer size.
+var BUFFER_SIZE = 25;
+
+function logDriveError(errorResponse) {
+   if(typeof Storage !== "undefined") {
+      if(localStorage.bufferIndex) {
+         bufferIndex = localStorage.bufferIndex;
+         if(bufferIndex > BUFFER_SIZE) {
+            bufferIndex = 0;
+         }
+         bufferIndex += 1;
+         localStorage.bufferIndex = bufferIndex;
+         
+         errors = JSON.parse(localStorage.errors);
+         errors[bufferIndex-1] = JSON.stringify(errorResponse);
+      } else {
+         localStorage.bufferIndex = 1;
+         bufferIndex = 1;
+         
+         errors = [];
+         errors[0] = JSON.stringify(errorResponse);
+      }
+      
+      localStorage.errors = JSON.stringify(errors);
+   } else {
+      console.log(JSON.stringify(errors));
+   }
+}
+
 // Accept the JSON state variable that is passed along by Google Drive when opening a PGN file
 function start_drive() {
   var pgnDrive = null;
@@ -53,7 +82,23 @@ function handleAuthResult(authResult) {
 function getPgn() {
   var request = gapi.client.drive.files.get({'fileId': this.pgnDrive});
   request.execute(function(resp) {
-    downloadFile(resp, start_pgn4web);
+    if(resp.error) {
+      if (resp.error.code === 400) {
+         logDriveError(resp.error);
+      } else if (resp.error.code === 401) {
+         logDriveError(resp.error);
+      } else if (resp.error.code === 403) {
+         logDriveError(resp.error);
+      } else if (resp.error.code === 404) {
+         logDriveError(resp.error);
+      } else if (resp.error.code === 500) {
+         logDriveError(resp.error);
+      } else {
+         logDriveError(resp.error);
+      }
+    } else {
+      downloadFile(resp, start_pgn4web);
+    }
   });
 }
 
