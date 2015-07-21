@@ -90,8 +90,10 @@ function getPgn() {
       } else if (resp.error.code === 403) {
          logDriveError(resp.error);
       } else if (resp.error.code === 404) {
+         alert("Google Drive reports this file ID doesn't exist. Please ensure you open the file via in Drive.");
          logDriveError(resp.error);
       } else if (resp.error.code === 500) {
+         alert("Google Drive reported an internal server error. Please try again in 1 minute.");
          logDriveError(resp.error);
       } else {
          logDriveError(resp.error);
