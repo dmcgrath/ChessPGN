@@ -1,4 +1,3 @@
-
 var thisParamString = window.location.search;
 
 // Drive API information needed to identify this app.
@@ -19,14 +18,14 @@ function start_drive() {
 
 var shareDrive;
 
-    // Enable sharing
-   var init = function() {
-     shareDrive = new gapi.drive.share.ShareClient(PROJECT_NUMBER);
-     shareDrive.setItemIds([this.pgnDrive]);
-   }
+ // Enable sharing
+var init = function() {
+  shareDrive = new gapi.drive.share.ShareClient(PROJECT_NUMBER);
+  shareDrive.setItemIds([this.pgnDrive]);
+}
 
 // Check if we have authorization to the user's Drive account to retrieve the PGN file
-// If not, call ask the user for authorization to do so.
+// If not, call to ask the user for authorization to do so.
 // Generally, we only need to ask the user the very first time they access the app.
 function getAuth(fileID) {
   var driveData = {pgnDrive: fileID};
@@ -52,10 +51,10 @@ function handleAuthResult(authResult) {
 // Using the file id passed in the state variable from Drive, attempt to get the PGN file.
 // Once completed, start the pgn4web engine.
 function getPgn() {
-      var request = gapi.client.drive.files.get({'fileId': this.pgnDrive});
-      request.execute(function(resp) {
-        downloadFile(resp, start_pgn4web);
-      });
+  var request = gapi.client.drive.files.get({'fileId': this.pgnDrive});
+  request.execute(function(resp) {
+    downloadFile(resp, start_pgn4web);
+  });
 }
 
 // Retrieve the PGN file's bytes from Google Drive.
