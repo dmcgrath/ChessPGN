@@ -48,10 +48,6 @@
       -webkit-touch-callout: none;
     }
     
-    section {
-      padding: 30px 25px;
-    }
-    
     section > * {
       margin: 10px
     }
@@ -495,7 +491,11 @@ function myOnResize() {
   else if (document.documentElement && document.documentElement.clientWidth) { ww = document.documentElement.clientWidth; wh = document.documentElement.clientHeight; }
   else if (document.body && document.body.clientWidth) { ww = document.body.clientWidth; wh = document.body.clientHeight; }
   else { return false; }
-
+  
+  <!-- START: Google Drive modification for controls in header -->
+  wh -= 59; // Subtract header height
+  <!-- END: Google Drive modification for controls in header -->
+  
   var squareSize;
   if (bare) {
     horizontalLayout = (ww >= wh);
