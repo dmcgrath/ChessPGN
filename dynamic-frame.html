@@ -30,9 +30,8 @@
 <link rel="icon" sizes="16x16" href="pawn.ico" />
 
 <!-- START: Google Drive modification for adding styles for buttons -->
-<link rel="import" href="http://www.polymer-project.org/components/paper-ripple/paper-ripple.html">
-<link rel="import" href="http://www.polymer-project.org/components/core-icons/core-icons.html">
-<link rel="import" href="http://www.polymer-project.org/components/font-roboto/roboto.html">
+<script src="components/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+<link rel="import" href="components/bower_components/paper-ripple/paper-ripple.html">
 <!-- END: Google Drive modification-->
 
 <style type="text/css">
@@ -49,19 +48,19 @@
       -webkit-touch-callout: none;
     }
     
-    .section {
-      margin: 8px;
+    section > * {
+      margin: 10px
     }
-
+    
     /* Button */
     .button {
       display: inline-block;
       position: relative;
       width: 140px;
-      height: 24px;
-      line-height: 24px;
-      font-size: 16px;
+      height: 32px;
+      line-height: 32px;
       border-radius: 2px;
+      font-size: 16px;
       background-color: #fff;
       color: #646464;
     }
@@ -69,10 +68,6 @@
     .button > paper-ripple {
       border-radius: 2px;
       overflow: hidden;
-    }
-    
-    .button.narrow {
-      width: 60px;
     }
 
     .button.blue {
@@ -496,7 +491,11 @@ function myOnResize() {
   else if (document.documentElement && document.documentElement.clientWidth) { ww = document.documentElement.clientWidth; wh = document.documentElement.clientHeight; }
   else if (document.body && document.body.clientWidth) { ww = document.body.clientWidth; wh = document.body.clientHeight; }
   else { return false; }
-
+  
+  <!-- START: Google Drive modification for controls in header -->
+  wh -= 59; // Subtract header height
+  <!-- END: Google Drive modification for controls in header -->
+  
   var squareSize;
   if (bare) {
     horizontalLayout = (ww >= wh);
@@ -980,10 +979,10 @@ simpleAddEvent(window, "orientationchange", function() {
 
 <body onResize="myOnResize();" onLoad="myOnResize();">
 <!-- START: Google Drive sharing control -->
-<div id="driveControls" class="section">
+<div id="section">
     <div class="button raised blue" onclick="shareDrive.showSettingsDialog()">
-      <div class="center" fit>Share games</div>
-      <paper-ripple fit></paper-ripple>
+      <div class="center">Share games</div>
+      <paper-ripple></paper-ripple>
     </div>
 </div>
 <!-- END: Google Drive modification -->
