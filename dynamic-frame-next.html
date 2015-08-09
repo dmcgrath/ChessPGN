@@ -62,6 +62,7 @@
       position: relative;
       width: 140px;
       height: 32px;
+      line-height: 32px;
       border-radius: 2px;
       font-size: 16px;
       background-color: #fff;
@@ -71,10 +72,6 @@
     .button > paper-ripple {
       border-radius: 2px;
       overflow: hidden;
-    }
-    
-    .button.narrow {
-      width: 60px;
     }
 
     .button.blue {
@@ -982,10 +979,10 @@ simpleAddEvent(window, "orientationchange", function() {
 
 <body onResize="myOnResize();" onLoad="myOnResize();">
 <!-- START: Google Drive sharing control -->
-<div id="driveControls section">
+<div id="section">
     <div class="button raised blue" onclick="shareDrive.showSettingsDialog()">
-      <div class="center" fit>Share games</div>
-      <paper-ripple fit></paper-ripple>
+      <div class="center">Share games</div>
+      <paper-ripple></paper-ripple>
     </div>
 </div>
 <!-- END: Google Drive modification -->
